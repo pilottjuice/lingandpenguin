@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Hokkaido Countdown</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;overflow:hidden;font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#475569;background:linear-gradient(#dff3ff,#f3f9ff 60%,#fff);display:grid;place-items:center;padding:20px}.card{position:relative;z-index:2;width:min(900px,100%);text-align:center;background:#ffffffb8;border:1px solid #fff;border-radius:38px;padding:44px 28px;box-shadow:0 25px 70px #9fd6f25c;backdrop-filter:blur(14px)}.heart{width:64px;height:64px;margin:auto;background:#ffe3ec;color:#f45d8d;border-radius:50%;display:grid;place-items:center;font-size:32px;animation:float 2.6s ease-in-out infinite}.eyebrow{color:#38a7db;font-size:13px;font-weight:800;letter-spacing:.3em;margin:20px 0 8px}h1{margin:0;color:#1e293b;font-size:clamp(38px,7vw,64px);line-height:1.05}p{font-size:clamp(16px,2.5vw,20px)}.count{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:38px 0}.box{background:#fff;border:1px solid #dff3ff;border-radius:24px;padding:24px 8px;box-shadow:0 10px 25px #bae6fd55}.num{font-size:clamp(32px,6vw,52px);font-weight:900;color:#168bc1;font-variant-numeric:tabular-nums}.label{font-size:10px;font-weight:800;letter-spacing:.16em;color:#94a3b8;margin-top:6px}.date{display:inline-block;background:#1e293b;color:white;padding:12px 20px;border-radius:999px;font-weight:700}.small{font-size:14px;color:#94a3b8}.snow{position:fixed;top:-30px;color:white;z-index:1;animation:fall linear infinite;user-select:none}@keyframes fall{to{transform:translateY(110vh) rotate(300deg)}}@keyframes float{50%{transform:translateY(-8px)}}@media(max-width:650px){.count{grid-template-columns:repeat(2,1fr)}.card{padding:32px 18px}}
+</style>
+</head>
+<body>
+<div id="snow"></div>
+<main class="card"><div class="heart">♥</div><div class="eyebrow">OUR WINTER ADVENTURE</div><h1>Hokkaido, here we come!</h1><p>Counting down to snowy days, warm food & lovely memories together ❄️</p><div class="count" id="count"></div><div class="date">✈ 19 January 2027 ♥</div><p class="small">You + Me + Hokkaido = our cutest winter story ☃️</p></main>
+<script>
+const labels=['DAYS','HOURS','MINUTES','SECONDS'];const target=new Date('2027-01-19T00:00:00+09:00');
+function tick(){let d=Math.max(0,target-Date.now());let v=[Math.floor(d/864e5),Math.floor(d%864e5/36e5),Math.floor(d%36e5/6e4),Math.floor(d%6e4/1e3)];document.getElementById('count').innerHTML=v.map((x,i)=>`<div class="box"><div class="num">${String(x).padStart(2,'0')}</div><div class="label">${labels[i]}</div></div>`).join('')}tick();setInterval(tick,1000);
+for(let i=0;i<25;i++){let s=document.createElement('div');s.className='snow';s.textContent='❄';s.style.left=(Math.random()*100)+'vw';s.style.fontSize=(12+Math.random()*22)+'px';s.style.animationDuration=(7+Math.random()*10)+'s';s.style.animationDelay=(-Math.random()*12)+'s';document.body.appendChild(s)}
+</script></body></html>
